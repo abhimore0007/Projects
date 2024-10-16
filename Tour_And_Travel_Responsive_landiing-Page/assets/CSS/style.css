@@ -1,0 +1,339 @@
+/*navbar Section Css code Start*/
+
+#navbar{
+    background: #f9f9f9;
+    display: fixed;
+}
+#logo{
+    font-size: 36px;
+    font-weight: 550;
+    color: black;
+    text-shadow: 0px 1px 1px black;
+    margin-bottom: 5px;
+}
+#logo span{
+    color: #65abec;
+}
+.navbar-toggler span{
+    color: #65abec;
+}
+.navbar-nav{
+    margin-left: 20px;
+}
+.nav-item .nav-link{
+    font-size: 16px;
+    font-weight: 550;
+    color: black;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: 0.5s ease;
+}
+.nav-item .nav-link:hover{
+    background: #65abec;
+    color: rgb(19, 14, 14);
+}
+#navbar form button{
+    background: #65abec;
+    color: rgb(20, 15, 15);
+    border: none;
+}
+/*navbar Section Css code end*/
+
+/* Home Selection Css start*/
+
+.home{
+    width: 100%;
+    height: 90vh;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)), url(/assets/images/traveling-with-off-road-car.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.home .content{
+    text-align: center;
+    padding-top: 200px;
+}
+.home .content h5{
+    color: white;
+    font-size: 38px;
+    font-weight: 550;
+    text-shadow: 0px 1px 1px black;
+}
+.home .content h1{
+    color: white;
+    font-size: 70px;
+    font-weight: 550;
+    text-shadow: 0px 1px 1px black;
+    margin-top: 5px;
+}
+.changecontent::after{
+    content: 'India';
+    color: #65abec;
+    text-shadow: 0px 1px 1px black;
+    animation: changetext 10s infinite linear;
+}
+
+div p{
+    font-weight: bold;
+    color: black;
+}
+
+.home .content p{
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    text-shadow: 0px 1px 1px black;
+    margin-bottom: 30px;
+    margin-top: 5px;
+}
+.home .content a{
+    padding: 10px;
+    background: white;
+    color: black;
+    letter-spacing: 2px;
+    font-weight: 550;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.home .content a:hover{
+    background: #65abec;
+    color: rgb(8, 8, 8);
+}
+
+@keyframes changetext{
+    20%{content: "Bali";}
+    40%{content: "India";}
+    60%{content: "Italy";}
+    80%{content: "Dubai";}
+    100%{content: "UK";}
+} 
+@media (max-width:850px){
+    .home{
+        background-position: flex;
+    }
+}
+
+/* Home Selection Css end */
+.main-txt{
+  padding-bottom: 50px;
+  color: #23527c;
+}
+/*packages css code start*/ 
+#new23 span{
+    color: #00fff2;
+}
+
+#new13{
+    border-bottom: 2px solid rgb(155, 23, 23);
+}
+
+.new23{
+  border-radius: 30px 30px 0px 0px;
+}
+
+/* section Service Start */
+
+.services{
+    background: #f9f9f9;
+    margin-top: 50px;
+}
+.services .card{
+    box-shadow: rgba(0,0,0,0.1) 0px 4px 12px;
+    border: none;
+    cursor: pointer;
+}
+.services .card i{
+    font-size: 80px;
+    text-align: center;
+    color: #ffa500;
+    margin-top: 20px;
+}
+.services .card .card-body h3{
+    font-weight: 600;
+}
+.services .card .card-body{
+    text-align: center;
+}
+
+
+/* section Service end */
+/* home page carts start*/
+.card {
+  border: 1px solid #ddd;
+  border-radius: 30px 30px 30px 30px;
+}
+
+.card-img-top {
+  border-top-left-radius: 20px; /* Rounded corners for the top-left */
+  border-top-right-radius: 20px; /* Rounded corners for the top-right */
+}
+
+.card-body {
+  padding: 1.25rem; /* Standard padding for card body */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+
+
+/* home carts css end */
+
+
+/* customer Review start */
+
+.customer-review {
+    background-color: #f7f7f7;
+    padding: 50px 0;
+  }
+  
+  .review-card {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .review-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .review-card h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .review-card p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .rating {
+    font-size: 18px;
+    color: #ffd700;
+  }
+  
+  .rating i {
+    margin-right: 5px;
+  }
+#titlecustomer{
+  margin-bottom: 50px;
+  font-size: 40px;
+  color: #337ab7;
+}
+
+/*customer review end */
+
+/*footer start */
+/* Footer Background and Styling */
+.footer {
+  background-color: rgba(0, 0, 0, 0.85); /* Dark background with slight transparency */
+  color: rgba(248, 249, 250, 0.9); /* Light text color with slight transparency */
+  padding: 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border with transparency */
+}
+
+/* Heading Styles */
+.footer-heading {
+  font-weight: 700; /* Bold for emphasis */
+  margin-bottom: 20px;
+  color: rgba(226, 226, 226, 0.9); /* Lighter color for headings with slight transparency */
+}
+
+/* Paragraph Text */
+.footer-text {
+  color: rgba(209, 209, 209, 0.8); /* Light gray for text with slight transparency */
+  line-height: 1.6;
+}
+
+/* Social Media List Styles */
+.social-media-list {
+  list-style: none;
+  padding: 0;
+}
+
+.social-media-list li {
+  margin-bottom: 10px;
+}
+
+.social-media-link {
+  text-decoration: none;
+  color: rgba(30, 144, 255, 0.9); /* Bright blue for social media links with slight transparency */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.social-media-link i {
+  margin-right: 8px;
+}
+
+/* Hover Effects for Social Media Links */
+.social-media-link:hover {
+  color: rgba(255, 69, 0, 0.9); /* Orange-red for hover effect with slight transparency */
+  text-decoration: underline;
+}
+
+/* Copyright Text */
+.copyright {
+  text-align: center;
+  color: rgba(176, 176, 176, 0.8); /* Light gray for the copyright text with slight transparency */
+  margin-top: 20px;
+}
+
+/*footer end */
+
+
+#firstrow{
+  margin-top: 80px;
+}
+
+.card-titles{
+  font-size: 30px;
+  color: #326693;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.card-texts{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+  
+}
+
+.footerpack{
+  margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*packages css code end*/
