@@ -1,0 +1,124 @@
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/css/style.css' %}?v=1">
+
+<style>
+    /* General Styles */
+    .second-hero {
+        min-height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        padding: 40px 15px;
+        flex-wrap: wrap;
+    }
+
+    .second-hero-img {
+        text-align: left;
+    }
+
+    .second-hero-img h4 {
+        font-size: 4rem;
+        font-weight: 700;
+        color: #ff7b00;
+        margin-bottom: 10px;
+        line-height: 1.2;
+    }
+
+    .second-hero-img p {
+        font-size: 1.1rem;
+        color: #ddd;
+        max-width: 500px;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+
+    .col-md-6 img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .col-md-6 img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+        .second-hero {
+            padding: 30px 20px;
+        }
+        .second-hero-img h4 {
+            font-size: 2.7rem;
+        }
+        .second-hero-img p {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .second-hero {
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        .second-hero-img {
+            text-align: center;
+        }
+        .second-hero-img h4 {
+            font-size: 2.4rem;
+        }
+        .second-hero-img p {
+            font-size: 1rem;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .second-hero-img h4 {
+            font-size: 2.7rem;
+        }
+        .second-hero-img p {
+            font-size: 0.95rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .second-hero-img h4 {
+            font-size: 2.4rem;
+        }
+        .second-hero-img p {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .second-hero-img h4 {
+            font-size: 2.4rem;
+        }
+        .second-hero-img p {
+            font-size: 0.85rem;
+        }
+    }
+</style>
+
+<div class="container-fluid p-0">
+    <div class="row align-items-center second-hero">
+        <div class="col-md-6 p-3 text-center">
+            <img src="{% static 'core/imgs/heroimg.jpg' %}" alt="Luxury Watch" class="img-fluid">
+        </div>
+        <div class="col-md-6 second-hero-img p-3">
+            <h4 id="secondHeroTitle">Why TimeZone?</h4>
+            <p>Our luxury watches combine classic style and top-quality craftsmanship, making every moment special.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

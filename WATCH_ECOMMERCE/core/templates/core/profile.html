@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    .sidebar {
+      background-color: #1e1e1e;
+      padding: 20px;
+      height: 100%;
+      min-height: 100vh;
+    }
+
+    .sidebar a {
+      color: #a9a9a9;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      color: #ffffff;
+    }
+
+    .sidebar h2 {
+      color: #ffffff;
+    }
+
+    .profile-section img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #3498db;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .card i {
+      font-size: 36px;
+      color: #3498db;
+      margin-bottom: 15px;
+    }
+
+    .cp-top-right-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        height: 100%;
+      }
+      .sidebar .nav {
+        display: flex;
+        flex-direction: column;
+      }
+      .cp-top-right-button {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebar">
+        <h2>Dashboard</h2>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Profile' %}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Order' %}">My Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'changePassword' %}">Change Password</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'AddressPage' %}">Address Book</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="profile-section text-center my-5">
+          <img src="{% static 'core/imgs/profile-icon-design-free-vector.jpg' %}" alt="Profile Picture">
+          <h1>Name: {{ request.user.first_name }}</h1>
+          <p>Email: {{ request.user.email }}</p>
+        </div>
+
+        <!-- Card Grid -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+          <div class="col">
+            <a href="{% url 'Order' %}" class="text-decoration-none">
+              <div class="card p-4">
+                <i class="bi bi-box-seam"></i>
+                <h3>Orders</h3>
+                <p>View your past and current orders</p>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="{% url 'Profile_edit' %}" class="text-decoration-none">
+              <div class="card p-4">
+                <i class="bi bi-heart"></i>
+                <h3>Profile</h3>
+                <p>Edit Profile</p>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="{% url 'AddressPage' %}" class="text-decoration-none">
+              <div class="card p-4">
+                <i class="bi bi-geo-alt-fill"></i>
+                <h3>Address</h3>
+                <p>Manage your saved locations</p>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="{% url "Support" %}" class="text-decoration-none">
+              <div class="card p-4">
+                <i class="bi bi-headset"></i>
+                <h3>Support</h3>
+                <p>Contact our support team</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <a href="/">
+    <button class="cp-top-right-button">Home</button>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

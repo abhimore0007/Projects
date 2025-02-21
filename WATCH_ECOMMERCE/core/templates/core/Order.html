@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="{% static 'core/imgs/android-chrome-192x192.png' %}" type="image/png">
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1e1e1e;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            font-size: 16px;
+            color: #a9a9a9;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li a.active {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Order Card */
+        .order-card {
+            background-color: #2c2c2c;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .order-card .title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .order-card .pricing .row {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .order-card .total {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 10px;
+            color: #f39c12;
+        }
+
+        /* Status Progress Bar */
+        .progress-track {
+            margin-top: 20px;
+        }
+
+        .progress-track ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progress-track ul li {
+            font-size: 14px;
+            text-align: center;
+            color: #a9a9a9;
+            position: relative;
+            flex: 1;
+        }
+
+        .progress-track ul li.active {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .progress-track ul li:before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background-color: #a9a9a9;
+            border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .progress-track ul li.active:before {
+            background-color: #3498db;
+        }
+
+        .progress-track ul li:not(:last-child)::after {
+            content: "";
+            height: 2px;
+            background-color: #a9a9a9;
+            position: absolute;
+            top: 1px;
+            left: 50%;
+            right: -50%;
+        }
+
+        .progress-track ul li.active ~ li:before,
+        .progress-track ul li.active ~ li::after {
+            background-color: #444;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 10px;
+            }
+
+            .order-card {
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            .order-card .title {
+                font-size: 18px;
+            }
+
+            .progress-track ul li {
+                font-size: 12px;
+            }
+
+            .back-button {
+                display: block;
+                position: fixed;
+                top: 25px;
+                right: 25px;
+                background-color: #3498db;
+                color: #ffffff;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                line-height: 40px;
+                text-align: center;
+                cursor: pointer;
+                z-index: 1000;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                text-decoration: none;
+            }
+
+            .back-button:hover {
+                background-color: #1e88e5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="javascript:history.back()" class="back-button d-md-none">
+        <i class="bi bi-arrow-left"></i>
+    </a>
+    
+    <div class="d-flex flex-column flex-md-row">
+        <nav class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li><a href="{% url 'Profile' %}" class="active">Profile</a></li>
+                <li><a href="{% url 'Order' %}">My Orders</a></li>
+                <li><a href="{% url 'changePassword' %}">Change Password</a></li>
+                <li><a href="{% url "AddressPage" %}">Address Book</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content w-100">
+            <div class="container">
+                <h2>My Orders</h2>
+                {% if orders %}
+                    {% for order in orders %}
+                        <div class="order-card">
+                            <div class="title">Order #{{ order.id }}</div>
+                            <p><strong>Date:</strong> {{ current_date }}</p>
+                            <p><strong>Status:</strong> {{ order.get_status_display }}</p>
+                       
+                            <div class="pricing">
+                                {% for item in order.items.all %}
+                                    <div class="row">
+                                        <span class="col">🕒 {{ item.watch.name }}</span>
+                                        <span class="col text-end">&#36; {{ item.watch.discounted_price }} (x{{ item.quantity }})</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <p class="total">Total Amount: &#36; {{ order.total }}</p>
+
+                            <div class="progress-track">
+                                <ul>
+                                    <li class="{% if order.status == 'PENDING' %}active{% endif %}">Pending</li>
+                                    <li class="{% if order.status == 'PROCESSING' %}active{% endif %}">Processing</li>
+                                    <li class="{% if order.status == 'COMPLETED' %}active{% endif %}">Completed</li>
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No orders available.</p>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

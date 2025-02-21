@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TZ| {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            position: relative;
+        }
+
+        .container-fluid {
+            width: 100%;
+            max-width: 1400px;
+            padding: 30px;
+        }
+
+        .product-card {
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            background-color: #1c1c1c;
+            transition: transform 0.3s ease;
+            margin-top: 30px; /* Increased margin-top for more spacing */
+            flex-direction: row;
+            width: 100%; /* Ensure full width */
+            max-width: 100%; /* Allow the card to grow with screen size */
+            padding: 40px; /* Increased padding for more space around the content */
+        }
+
+        .product-image {
+            flex: 1;
+            min-width: 350px; /* Increased min-width for larger image section */
+            max-width: 700px; /* Increased max-width for larger image section */
+            border-right: 2px solid #444;
+            overflow: hidden;
+            position: relative;
+            height: 450px; /* Increased height for a taller image */
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensure the full image is displayed without cropping */
+        }
+
+        .product-info {
+            flex: 1;
+            min-width: 350px; /* Increased min-width for more spacious info section */
+            padding: 30px; /* Increased padding for the product details */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-name {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #f39c12;
+            text-transform: uppercase;
+        }
+
+        .product-description {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-top: 10px;
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            color: #f39c12;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .button-container .button {
+            flex: 1;
+            min-width: 150px;
+            max-width: 250px;
+            padding: 15px;
+            background-color: #f39c12;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.3rem;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .button-container .button:hover {
+            background-color: #e67e22;
+            transform: scale(1.05);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #e67e22;
+            transform: scale(1.05);
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .product-card {
+                flex-direction: column;
+                align-items: center;
+            }
+            .product-image, .product-info {
+                width: 100%;
+                border-right: none;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 1366px) {
+            .product-card {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .product-image {
+                max-width: 500px; /* Adjust max width for laptops */
+            }
+
+            .product-name {
+                font-size: 1.8rem;
+            }
+
+            .product-description {
+                font-size: 1.1rem;
+            }
+
+            .product-price {
+                font-size: 1.4rem;
+            }
+
+            .button-container .button {
+                min-width: 150px;
+                max-width: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-name {
+                font-size: 1.5rem;
+            }
+            .product-description {
+                font-size: 1rem;
+            }
+            .product-price {
+                font-size: 1.3rem;
+            }
+            .button-container .button {
+                min-width: 100%;
+            }
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .container-fluid {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-button">Back</a>
+
+    <div class="container-fluid">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="{{ watch_details.watch_image.url }}" alt="{{ watch_details.name }}">
+            </div>
+
+            <div class="product-info">
+                <div>
+                    <div class="product-name">{{ watch_details.name }}</div>
+                    <div class="product-description">{{ watch_details.small_description }}</div>
+                </div>
+                <div>
+                    <div class="product-price">&#36; {{ watch_details.discounted_price }}</div>
+                    <div class="button-container">
+                        <a class="button" href="{% url 'AddToCart' watch_details.id %}">Add to Cart</a>
+                        <a class="button" href="{% url 'Buy_now' watch_details.id %}">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{% static 'core/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'core/js/popper.js' %}"></script>
+</body>
+</html>

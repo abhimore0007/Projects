@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .error {
+            color: red;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .btn-custom {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+        .btn-custom:hover {
+            background-color: #218838;
+            color: white;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .card-body {
+            padding: 2rem;
+            position: relative;
+        }
+        .bg-image {
+            background-image: url('{% static "core/imgs/register_img.jpg" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section class="vh-100 bg-image d-flex align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card rounded-3 shadow-lg">
+                        <div class="card-body">
+                            <a href="{% url "base" %}" class="btn btn-outline-secondary back-button">Back</a>
+                            <h2 class="text-uppercase text-center mb-4">Create an Account</h2>
+                            <form method="POST">
+                                {% csrf_token %}
+                                {% if reg.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    {% for error in reg.non_field_errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                                
+                                {% for field in reg %}
+                                    <div class="form-group">
+                                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                                        {{ field }}
+                                        {% if field.errors %}
+                                            <div class="error">{{ field.errors.0 }}</div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                                <button type="submit" class="btn btn-custom w-100">Register</button>
+                            </form>
+                        </div>
+                        <p class="text-center mt-3">
+                            Already have an account? <a href="{% url 'login' %}">Login here</a>
+                        </p>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
